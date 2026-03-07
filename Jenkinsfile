@@ -51,5 +51,12 @@ pipeline {
                 echo 'Docker run completed.';
             }
         }
+        stage('Docker push') {
+            steps {
+                echo 'Docker push started.';
+                sh 'docker push vn2001/test-jenkins-project:latest'
+                echo 'Docker push completed.';
+            }
+        }
     }
 }

@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages {
+        stage('Check Java') {
+            steps {
+                sh 'java -version'
+                sh 'javac -version'
+                sh 'mvn -version'
+                sh 'echo $JAVA_HOME'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'maven cleaning package.';

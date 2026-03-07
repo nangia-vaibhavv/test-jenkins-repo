@@ -30,5 +30,26 @@ pipeline {
                 echo 'maven compile completed.';
             }
         }
+        stage('Docker login') {
+            steps {
+                echo 'Docker login started.';
+                sh 'docker login -u vaibhavnangia2001@gmail.com -p Qwerty@123'
+                echo 'Docker login completed.';
+            }
+        }
+        stage('Docker build') {
+            steps {
+                echo 'Docker build started.';
+                sh 'docker build -t vn2001/test-jenkins-project:latest .'
+                echo 'Docker build completed.';
+            }
+        }
+        stage('Docker run') {
+            steps {
+                echo 'Docker run started.';
+                sh 'docker run vn2001/test-jenkins-project:latest'
+                echo 'Docker run completed.';
+            }
+        }
     }
 }

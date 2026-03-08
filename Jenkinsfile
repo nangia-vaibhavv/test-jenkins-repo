@@ -35,7 +35,7 @@ pipeline {
                 echo 'Docker login started.';
                 withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     echo "username: ${DOCKER_USERNAME}"
-                    sh 'docker login -u DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
                 }
                 echo 'Docker login completed.';
             }

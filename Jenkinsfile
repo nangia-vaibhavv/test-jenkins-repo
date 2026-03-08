@@ -33,7 +33,9 @@ pipeline {
         stage('Docker login') {
             steps {
                 echo 'Docker login started.';
-                sh 'docker login -u vaibhavnangia2001@gmail.com -p Qwerty@123'
+                withCredentials([usernamePassword(credentialsId: 'docker-creds', passwordVariable: 'docker-password', usernameVariable: 'docker-username')]) {
+                    sh 'docker login -u $docker-username -p $docker-password'
+                }
                 echo 'Docker login completed.';
             }
         }
